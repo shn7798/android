@@ -9,9 +9,47 @@ public class News extends Base {
     private NewsComment newsComment;
     private Integer commentCount;
     private NewsAuthor newsAuthor;
+    private String author;
     private String catlog;
     private String postTime;
     private String quote;
+    private String tag;
+    private String link;
+    private String picURL;
+
+    public String getPicURL() {
+        return picURL;
+    }
+
+    public void setPicURL(String picURL) {
+        this.picURL = picURL;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
+
 
     public News parse(String newsData){
         //TODO

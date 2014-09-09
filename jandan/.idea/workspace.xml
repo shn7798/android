@@ -47,59 +47,49 @@
       <file leaf-file-name="AppStart.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/shn/study/jandan/AppStart.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="714" max-vertical-offset="1168">
-              <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+            <state vertical-scroll-proportion="2.0" vertical-offset="580" max-vertical-offset="1888">
+              <caret line="33" column="34" selection-start-line="33" selection-start-column="34" selection-end-line="33" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1111#1117#0" expanded="true" />
+                <element signature="e#2883#3200#0" expanded="true" />
+                <element signature="e#3189#3190#0" expanded="true" />
+                <element signature="e#3306#3634#0" expanded="true" />
+                <element signature="e#3415#3600#0" expanded="true" />
+                <element signature="e#3581#3582#0" expanded="true" />
+                <element signature="e#3623#3624#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="news_listitem.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/layout/news_listitem.xml">
-          <provider selected="true" editor-type-id="android-designer">
-            <state />
+      <file leaf-file-name="ListViewNewsAdapter.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/shn/study/jandan/adapter/ListViewNewsAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="234" max-vertical-offset="1680">
+              <caret line="97" column="21" selection-start-line="97" selection-start-column="21" selection-end-line="97" selection-end-column="21" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
           </provider>
-          <provider editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="672">
+        </entry>
+      </file>
+      <file leaf-file-name="jandan.iml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/jandan.iml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="416">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="frame_news.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/res/layout/frame_news.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
+      <file leaf-file-name="AndroidManifest.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.074074" vertical-offset="240" max-vertical-offset="640">
-              <caret line="32" column="61" selection-start-line="32" selection-start-column="61" selection-end-line="32" selection-end-column="61" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="400">
+              <caret line="6" column="66" selection-start-line="6" selection-start-column="66" selection-end-line="6" selection-end-column="66" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AppContext.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/shn/study/jandan/AppContext.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="137" max-vertical-offset="848">
-              <caret line="24" column="28" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#684#685#0" expanded="true" />
-                <element signature="e#730#731#0" expanded="true" />
-                <element signature="e#765#766#0" expanded="true" />
-                <element signature="e#846#847#0" expanded="true" />
-                <element signature="e#901#902#0" expanded="true" />
-                <element signature="e#948#949#0" expanded="true" />
-                <element signature="e#983#984#0" expanded="true" />
-                <element signature="e#1040#1041#0" expanded="true" />
-                <element signature="e#1081#1082#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -107,31 +97,39 @@
       <file leaf-file-name="HTTPClientHelper.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/shn/study/jandan/util/HTTPClientHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2368">
-              <caret line="33" column="32" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="202" max-vertical-offset="2400">
+              <caret line="135" column="44" selection-start-line="135" selection-start-column="25" selection-end-line="135" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1835#1836#0" expanded="true" />
+                <element signature="e#1878#1879#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NewsComment.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/shn/study/jandan/bean/NewsComment.java">
+      <file leaf-file-name="NewsAPI.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/shn/study/jandan/api/NewsAPI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="208">
-              <caret line="5" column="37" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="37" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1079" max-vertical-offset="1968">
+              <caret line="112" column="37" selection-start-line="112" selection-start-column="37" selection-end-line="112" selection-end-column="37" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2113#2119#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="NewsAuthor.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/shn/study/jandan/bean/NewsAuthor.java">
+      <file leaf-file-name="StringHelper.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/shn/study/jandan/util/StringHelper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="208">
-              <caret line="5" column="36" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
-              <folding />
+            <state vertical-scroll-proportion="0.7400881" vertical-offset="0" max-vertical-offset="864">
+              <caret line="21" column="41" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="41" />
+              <folding>
+                <element signature="e#204#205#0" expanded="true" />
+                <element signature="e#246#247#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -139,31 +137,45 @@
       <file leaf-file-name="News.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/shn/study/jandan/bean/News.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="224" max-vertical-offset="928">
-              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="16" max-vertical-offset="1536">
+              <caret line="19" column="31" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
+              <folding>
+                <element signature="e#508#509#0" expanded="true" />
+                <element signature="e#552#553#0" expanded="true" />
+                <element signature="e#588#589#0" expanded="true" />
+                <element signature="e#621#622#0" expanded="true" />
+                <element signature="e#650#651#0" expanded="true" />
+                <element signature="e#694#695#0" expanded="true" />
+                <element signature="e#730#731#0" expanded="true" />
+                <element signature="e#761#762#0" expanded="true" />
+                <element signature="e#788#789#0" expanded="true" />
+                <element signature="e#828#829#0" expanded="true" />
+                <element signature="e#860#861#0" expanded="true" />
+                <element signature="e#890#891#0" expanded="true" />
+                <element signature="e#916#917#0" expanded="true" />
+                <element signature="e#954#955#0" expanded="true" />
+                <element signature="e#984#985#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="System.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/devel/android-sdk-macosx/sources/android-15/java/lang/System.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1485" max-vertical-offset="9440">
+              <caret line="158" column="30" selection-start-line="158" selection-start-column="30" selection-end-line="158" selection-end-column="30" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ListViewNewsAdapter.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/shn/study/jandan/adapter/ListViewNewsAdapter.java">
+      <file leaf-file-name="Date.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/devel/android-sdk-macosx/sources/android-15/java/util/Date.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7004405" vertical-offset="1234" max-vertical-offset="1872">
-              <caret line="97" column="21" selection-start-line="97" selection-start-column="21" selection-end-line="97" selection-end-column="21" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1160#1161#0" expanded="true" />
-                <element signature="e#1198#1199#0" expanded="true" />
-                <element signature="e#1255#1256#0" expanded="true" />
-                <element signature="e#1282#1283#0" expanded="true" />
-                <element signature="e#1339#1340#0" expanded="true" />
-                <element signature="e#1363#1364#0" expanded="true" />
-                <element signature="e#2485#2810#0" expanded="true" />
-                <element signature="e#2799#2800#0" expanded="true" />
-                <element signature="e#2891#3232#0" expanded="true" />
-                <element signature="e#3221#3222#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.0" vertical-offset="1993" max-vertical-offset="11920">
+              <caret line="50" column="39" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="39" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -191,15 +203,17 @@
         <option value="$PROJECT_DIR$/src/AppContext.java" />
         <option value="$PROJECT_DIR$/src/shn/study/jandan/util/HTTPHelper.java" />
         <option value="$PROJECT_DIR$/AndroidManifest.xml" />
-        <option value="$PROJECT_DIR$/src/shn/study/jandan/util/HTTPClientHelper.java" />
         <option value="$PROJECT_DIR$/res/layout/news_item.xml" />
         <option value="$PROJECT_DIR$/res/layout/main.xml" />
-        <option value="$PROJECT_DIR$/src/shn/study/jandan/bean/News.java" />
         <option value="$PROJECT_DIR$/src/shn/study/jandan/AppContext.java" />
-        <option value="$PROJECT_DIR$/src/shn/study/jandan/AppStart.java" />
         <option value="$PROJECT_DIR$/res/layout/frame_news.xml" />
         <option value="$PROJECT_DIR$/res/layout/news_listitem.xml" />
         <option value="$PROJECT_DIR$/src/shn/study/jandan/adapter/ListViewNewsAdapter.java" />
+        <option value="$PROJECT_DIR$/src/shn/study/jandan/util/HTTPClientHelper.java" />
+        <option value="$PROJECT_DIR$/src/shn/study/jandan/util/StringHelper.java" />
+        <option value="$PROJECT_DIR$/src/shn/study/jandan/AppStart.java" />
+        <option value="$PROJECT_DIR$/src/shn/study/jandan/bean/News.java" />
+        <option value="$PROJECT_DIR$/src/shn/study/jandan/api/NewsAPI.java" />
       </list>
     </option>
   </component>
@@ -347,6 +361,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="bean" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jandan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jandan" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jandan" />
+              <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="api" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -629,12 +665,12 @@
       <changelist id="17214c65-3f03-44c9-b8c1-39d6e805fe4a" name="Default" comment="" />
       <created>1410054744326</created>
       <updated>1410054744326</updated>
-      <workItem from="1410054747167" duration="35206000" />
+      <workItem from="1410054747167" duration="46841000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35206000" />
+    <option name="totallyTimeSpent" value="46841000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -689,7 +725,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="5" />
+      <option name="time" value="9" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -787,14 +823,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="400">
-          <caret line="6" column="66" selection-start-line="6" selection-start-column="66" selection-end-line="6" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/devel/android-sdk-macosx/sources/android-15/java/lang/Thread.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334" vertical-offset="12989" max-vertical-offset="19552">
@@ -835,32 +863,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.84" vertical-offset="0" max-vertical-offset="240">
-          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/devel/android-sdk-macosx/sources/android-15/android/app/ActivityThread.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="26783" max-vertical-offset="68192">
           <caret line="1846" column="21" selection-start-line="1846" selection-start-column="21" selection-end-line="1846" selection-end-column="21" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/shn/study/jandan/util/HTTPClientHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="173" max-vertical-offset="2368">
-          <caret line="33" column="32" selection-start-line="33" selection-start-column="32" selection-end-line="33" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -880,38 +887,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/shn/study/jandan/bean/News.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="224" max-vertical-offset="928">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/devel/android-sdk-macosx/sources/android-15/android/widget/AdapterView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0430839" vertical-offset="3293" max-vertical-offset="17888">
           <caret line="240" column="21" selection-start-line="240" selection-start-column="21" selection-end-line="240" selection-end-column="21" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/shn/study/jandan/AppContext.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="137" max-vertical-offset="848">
-          <caret line="24" column="28" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#684#685#0" expanded="true" />
-            <element signature="e#730#731#0" expanded="true" />
-            <element signature="e#765#766#0" expanded="true" />
-            <element signature="e#846#847#0" expanded="true" />
-            <element signature="e#901#902#0" expanded="true" />
-            <element signature="e#948#949#0" expanded="true" />
-            <element signature="e#983#984#0" expanded="true" />
-            <element signature="e#1040#1041#0" expanded="true" />
-            <element signature="e#1081#1082#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -942,17 +922,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/shn/study/jandan/AppStart.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="714" max-vertical-offset="1168">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1111#1117#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/res/layout/news_listitem.xml">
       <provider selected="true" editor-type-id="android-designer">
         <state />
@@ -964,22 +933,148 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/shn/study/jandan/AppContext.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="137" max-vertical-offset="848">
+          <caret line="24" column="28" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#684#685#0" expanded="true" />
+            <element signature="e#730#731#0" expanded="true" />
+            <element signature="e#765#766#0" expanded="true" />
+            <element signature="e#846#847#0" expanded="true" />
+            <element signature="e#901#902#0" expanded="true" />
+            <element signature="e#948#949#0" expanded="true" />
+            <element signature="e#983#984#0" expanded="true" />
+            <element signature="e#1040#1041#0" expanded="true" />
+            <element signature="e#1081#1082#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/res/layout/main.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.5555556" vertical-offset="0" max-vertical-offset="288">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/devel/android-sdk-macosx/sources/android-15/java/util/Date.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1993" max-vertical-offset="11920">
+          <caret line="50" column="39" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/devel/android-sdk-macosx/sources/android-15/java/lang/System.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1485" max-vertical-offset="9440">
+          <caret line="158" column="30" selection-start-line="158" selection-start-column="30" selection-end-line="158" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/jandan.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="454">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="400">
+          <caret line="6" column="66" selection-start-line="6" selection-start-column="66" selection-end-line="6" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shn/study/jandan/util/HTTPClientHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="202" max-vertical-offset="2400">
+          <caret line="135" column="44" selection-start-line="135" selection-start-column="25" selection-end-line="135" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1835#1836#0" expanded="true" />
+            <element signature="e#1878#1879#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/shn/study/jandan/adapter/ListViewNewsAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7004405" vertical-offset="1234" max-vertical-offset="1872">
+        <state vertical-scroll-proportion="0.0" vertical-offset="162" max-vertical-offset="1872">
           <caret line="97" column="21" selection-start-line="97" selection-start-column="21" selection-end-line="97" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1160#1161#0" expanded="true" />
-            <element signature="e#1198#1199#0" expanded="true" />
-            <element signature="e#1255#1256#0" expanded="true" />
-            <element signature="e#1282#1283#0" expanded="true" />
-            <element signature="e#1339#1340#0" expanded="true" />
-            <element signature="e#1363#1364#0" expanded="true" />
-            <element signature="e#2485#2810#0" expanded="true" />
-            <element signature="e#2799#2800#0" expanded="true" />
-            <element signature="e#2891#3232#0" expanded="true" />
-            <element signature="e#3221#3222#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shn/study/jandan/AppStart.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.0" vertical-offset="580" max-vertical-offset="1888">
+          <caret line="33" column="34" selection-start-line="33" selection-start-column="34" selection-end-line="33" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2883#3200#0" expanded="true" />
+            <element signature="e#3189#3190#0" expanded="true" />
+            <element signature="e#3306#3634#0" expanded="true" />
+            <element signature="e#3415#3600#0" expanded="true" />
+            <element signature="e#3581#3582#0" expanded="true" />
+            <element signature="e#3623#3624#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shn/study/jandan/bean/News.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="16" max-vertical-offset="1536">
+          <caret line="19" column="31" selection-start-line="19" selection-start-column="31" selection-end-line="19" selection-end-column="31" />
+          <folding>
+            <element signature="e#508#509#0" expanded="true" />
+            <element signature="e#552#553#0" expanded="true" />
+            <element signature="e#588#589#0" expanded="true" />
+            <element signature="e#621#622#0" expanded="true" />
+            <element signature="e#650#651#0" expanded="true" />
+            <element signature="e#694#695#0" expanded="true" />
+            <element signature="e#730#731#0" expanded="true" />
+            <element signature="e#761#762#0" expanded="true" />
+            <element signature="e#788#789#0" expanded="true" />
+            <element signature="e#828#829#0" expanded="true" />
+            <element signature="e#860#861#0" expanded="true" />
+            <element signature="e#890#891#0" expanded="true" />
+            <element signature="e#916#917#0" expanded="true" />
+            <element signature="e#954#955#0" expanded="true" />
+            <element signature="e#984#985#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shn/study/jandan/api/NewsAPI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1079" max-vertical-offset="1968">
+          <caret line="112" column="37" selection-start-line="112" selection-start-column="37" selection-end-line="112" selection-end-column="37" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2113#2119#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/shn/study/jandan/util/StringHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7400881" vertical-offset="0" max-vertical-offset="864">
+          <caret line="21" column="41" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="41" />
+          <folding>
+            <element signature="e#204#205#0" expanded="true" />
+            <element signature="e#246#247#0" expanded="true" />
           </folding>
         </state>
       </provider>

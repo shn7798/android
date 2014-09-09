@@ -2,15 +2,16 @@ package shn.study.jandan;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.text.Layout;
-import android.view.LayoutInflater;
+import android.os.Message;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.*;
+import android.os.Handler;
+import android.util.Log;
+import org.apache.http.HttpResponse;
 import shn.study.jandan.adapter.ListViewNewsAdapter;
+import shn.study.jandan.api.NewsAPI;
 import shn.study.jandan.bean.News;
+import shn.study.jandan.util.HTTPClientHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,18 +19,36 @@ import java.util.List;
 
 public class AppStart extends Activity {
 
+    public static final String TAG = "AppStart";
+    private static final String URL_NEWS_TODAY = "http://jandan.net/";
+    private static final String URL_NEWS_ONEDAYSAGO = "http://jandan.net/";
+
     private ListView lvNews;
     private ListViewNewsAdapter lvNewsAdapter;
     private AppContext ac;
+    private List<News> lvNewsData;
+    private Button btnTodayNews;
+
+    private Handler lvNewsHandler;
 
 
-    public void updateNews(List<News> newsList){
-        for(int i=0;i<100;i++) {
-            News news = new News();
-            news.setTitle("这是第{0}篇文章的标题".replace("{0}",String.valueOf(i + 1)));
-            news.setBody("今天是中秋节");
-            newsList.add(news);
+    private void updateNews(List<News> newsList,Handler handler){
+        String URL = NewsAPI.getDayNewsURL(0);
+        Log.d(TAG,"URL = [" +URL + "]");
+        HttpResponse response = HTTPClientHelper.getFromURL(URL);
+        String body = NewsAPI.getPreviewNewsBody(URL);
+        List<News> newsListData = NewsAPI.getPreviewNewsItems(body);
+        for(int i=0;i<newsListData.size();i++){
+            if(i >= newsList.size()){
+                newsList.add(newsListData.get(i));
+            } else {
+                newsList.set(i, newsListData.get(i));
+            }
         }
+
+        Message msg = new Message();
+        msg.what = NewsAPI.API_SUCEESS;
+        handler.sendMessage(msg);
     }
 
     @Override
@@ -39,11 +58,11 @@ public class AppStart extends Activity {
         ac = (AppContext)getApplication();
 
 
-        List<News> newsList = new ArrayList<News>();
-        updateNews(newsList);
+        lvNewsData = new ArrayList<News>();
+
 
         lvNews = (ListView)findViewById(R.id.lv_news);
-        lvNewsAdapter = new ListViewNewsAdapter(ac,0,newsList,R.layout.news_listitem);
+        lvNewsAdapter = new ListViewNewsAdapter(ac,0,lvNewsData,R.layout.news_listitem);
         lvNews.setAdapter(lvNewsAdapter);
 
         lvNews.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -60,6 +79,30 @@ public class AppStart extends Activity {
                 if(news == null) return;
                 Toast.makeText(ac,news.getTitle(),Toast.LENGTH_SHORT)
                         .show();
+            }
+        });
+
+        lvNewsHandler = new Handler() {
+            @Override
+            public void handleMessage(Message msg) {
+                super.handleMessage(msg);
+                switch (msg.what){
+                    case NewsAPI.API_SUCEESS:
+                        lvNewsAdapter.notifyDataSetChanged();
+                }
+            }
+        };
+        btnTodayNews = (Button)findViewById(R.id.catlog_today);
+        btnTodayNews.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Thread(){
+                    @Override
+                    public void run() {
+                        updateNews(lvNewsData, lvNewsHandler);
+                    }
+                }.start();
+
             }
         });
 
