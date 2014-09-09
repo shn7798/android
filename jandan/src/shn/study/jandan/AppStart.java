@@ -28,12 +28,14 @@ public class AppStart extends Activity {
     private AppContext ac;
     private List<News> lvNewsData;
     private Button btnTodayNews;
+    private Button btnOnedayagoNews;
+    private Button btnTwodaysagoNews;
 
     private Handler lvNewsHandler;
 
 
-    private void updateNews(List<News> newsList,Handler handler){
-        String URL = NewsAPI.getDayNewsURL(0);
+    private void updateNews(int day,List<News> newsList,Handler handler){
+        String URL = NewsAPI.getDayNewsURL(day);
         Log.d(TAG,"URL = [" +URL + "]");
         HttpResponse response = HTTPClientHelper.getFromURL(URL);
         String body = NewsAPI.getPreviewNewsBody(URL);
@@ -45,6 +47,11 @@ public class AppStart extends Activity {
                 newsList.set(i, newsListData.get(i));
             }
         }
+
+        for(int i = newsList.size(); i > newsListData.size(); i--){
+            newsList.remove(i-1);
+        }
+
 
         Message msg = new Message();
         msg.what = NewsAPI.API_SUCEESS;
@@ -99,7 +106,35 @@ public class AppStart extends Activity {
                 new Thread(){
                     @Override
                     public void run() {
-                        updateNews(lvNewsData, lvNewsHandler);
+                        updateNews(0,lvNewsData, lvNewsHandler);
+                    }
+                }.start();
+
+            }
+        });
+
+        btnOnedayagoNews = (Button)findViewById(R.id.catlog_onedayago);
+        btnOnedayagoNews.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Thread(){
+                    @Override
+                    public void run() {
+                        updateNews(-1,lvNewsData, lvNewsHandler);
+                    }
+                }.start();
+
+            }
+        });
+
+        btnTwodaysagoNews = (Button)findViewById(R.id.catlog_twodaysago);
+        btnTwodaysagoNews.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Thread(){
+                    @Override
+                    public void run() {
+                        updateNews(-2,lvNewsData, lvNewsHandler);
                     }
                 }.start();
 
