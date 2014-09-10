@@ -18,6 +18,7 @@ public class StringHelper {
         int posStart;
         int posEnd;
 
+
         if(cursor == null)
             cursor = new StringCursor(0);
 

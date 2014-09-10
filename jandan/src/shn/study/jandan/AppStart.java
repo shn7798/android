@@ -84,7 +84,7 @@ public class AppStart extends Activity {
                     news = (News) tv.getTag();
                 }
                 if(news == null) return;
-                Toast.makeText(ac,news.getTitle(),Toast.LENGTH_SHORT)
+                Toast.makeText(ac,news.getBody(),Toast.LENGTH_LONG)
                         .show();
             }
         });

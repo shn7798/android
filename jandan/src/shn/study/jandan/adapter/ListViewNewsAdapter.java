@@ -1,13 +1,20 @@
 package shn.study.jandan.adapter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.net.Uri;
+import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import shn.study.jandan.R;
+import shn.study.jandan.api.NewsAPI;
 import shn.study.jandan.bean.News;
+import shn.study.jandan.util.ImageHelper;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -62,9 +69,6 @@ public class ListViewNewsAdapter extends BaseAdapter {
             item.title = (TextView)convertView.findViewById(R.id.news_listitem_title);
             item.body = (TextView)convertView.findViewById(R.id.news_listitem_body);
             item.pic = (ImageView)convertView.findViewById(R.id.news_listitem_pic);
-            item.getBody = (Button) convertView.findViewById(R.id.news_listitem_getbody);
-            item.getTitle = (Button) convertView.findViewById(R.id.news_listitem_gettitle);
-
             convertView.setTag(item);
 
         } else {
@@ -76,33 +80,38 @@ public class ListViewNewsAdapter extends BaseAdapter {
         item.title.setTag(news);
 
         item.body.setText(news.getBody());
-        //item.pic.setImageURI(news);
 
-        item.getBody.setTag(item);
-        item.getBody.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ListItemView item = (ListItemView)v.getTag();
-                Toast.makeText(context,
-                    item.body.getText(),
-                    Toast.LENGTH_SHORT)
-                .show();
 
-            }
-        });
+        if(news.getPicObj() == null){
+            final ListItemView itemRO = item;
+            final News newsRO = news;
+            final Handler handler = new Handler() {
+                @Override
+                public void handleMessage(Message msg) {
+                    super.handleMessage(msg);
+                    switch (msg.what) {
+                        case NewsAPI.API_SUCEESS:
+                            newsRO.setPicObj((Bitmap)msg.obj);
+                            itemRO.pic.setImageBitmap((Bitmap) msg.obj);
+                            break;
+                    }
+                }
+            };
 
-        item.getTitle.setTag(item);
-        item.getTitle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ListItemView item = (ListItemView)v.getTag();
-                Toast.makeText(context,
-                        item.title.getText(),
-                        Toast.LENGTH_SHORT)
-                        .show();
-            }
-        });
+            final String imageURL = news.getPicURL();
+            new Thread() {
+                @Override
+                public void run() {
+                    super.run();
+                    Message msg = new Message();
+                    msg.what = NewsAPI.API_SUCEESS;
+                    msg.obj = ImageHelper.getImageFromURL(imageURL);
+                    handler.sendMessage(msg);
+                }
+            }.start();
+        }
 
+        item.pic.setImageBitmap(news.getPicObj());
         return convertView;
     }
 }

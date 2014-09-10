@@ -1,5 +1,7 @@
 package shn.study.jandan.bean;
 
+import android.graphics.Bitmap;
+
 /**
  * Created by shn7798 on 14-9-7.
  */
@@ -16,6 +18,15 @@ public class News extends Base {
     private String tag;
     private String link;
     private String picURL;
+    private Bitmap picObj;
+
+    public Bitmap getPicObj() {
+        return picObj;
+    }
+
+    public void setPicObj(Bitmap picObj) {
+        this.picObj = picObj;
+    }
 
     public String getPicURL() {
         return picURL;
