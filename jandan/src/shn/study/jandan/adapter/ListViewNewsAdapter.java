@@ -78,7 +78,21 @@ public class ListViewNewsAdapter extends BaseAdapter {
             item = (ListItemView)convertView.getTag();
         }
 
-        News news = this.newsData.get(position);
+        final News news = this.newsData.get(position);
+
+        // 解除OnClickListener, 释放News的引用
+        convertView.setOnClickListener(null);
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Message msg = new Message();
+                msg.what = AppContext.MSG_NEWS_ITEM_CLICK;
+                msg.obj = news;
+                handler.sendMessage(msg);
+            }
+        });
+
         item.title.setText(news.getTitle());
         item.title.setTag(news);
         item.body.setText(news.getBody());

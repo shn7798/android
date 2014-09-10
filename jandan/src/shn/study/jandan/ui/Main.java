@@ -1,6 +1,7 @@
 package shn.study.jandan.ui;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Message;
@@ -40,9 +41,7 @@ public class Main extends BaseActivity {
     private Handler lvNewsHandler;
     private ListViewNewsAdapter lvNewsAdapter;
 
-    private View.OnClickListener btnTodayOnClick;
-    private View.OnClickListener btnOnedayagoOnClick;
-    private View.OnClickListener btnTwodaysagoOnClick;
+    private View.OnClickListener itemNewsClick;
 
     private List<News> lvNewsData = new ArrayList<News>();
 
@@ -61,32 +60,46 @@ public class Main extends BaseActivity {
                 super.handleMessage(msg);
                 Log.d(TAG,"msg.what: "+msg.what);
                 switch (msg.what){
-                    case AppContext.MSG_NEWS_TEXT_LOAD_START:
+                    case AppContext.MSG_NEWS_TEXT_LOAD_START: {
                         progressDlg.show();
                         break;
-                    case AppContext.MSG_NEWS_TEXT_LOAD_DONE:
+                    }
+                    case AppContext.MSG_NEWS_TEXT_LOAD_DONE: {
                         progressDlg.hide();
-                        List<News> newsData = (List<News>)msg.obj;
-                        if(newsData != null && newsData.size() > 0){
+                        List<News> newsData = (List<News>) msg.obj;
+                        if (newsData != null && newsData.size() > 0) {
                             lvNewsData.clear();
                             lvNewsAdapter.notifyDataSetChanged();
-                            for(int i=0;i<newsData.size();i++){
+                            for (int i = 0; i < newsData.size(); i++) {
                                 lvNewsData.add(newsData.get(i));
                             }
                         }
                         lvNewsAdapter.notifyDataSetChanged();
                         break;
-                    case AppContext.MSG_NEWS_PIC_LOAD_START:
+                    }
+                    case AppContext.MSG_NEWS_PIC_LOAD_START: {
                         //progressDlg.show();
                         break;
-                    case AppContext.MSG_NEWS_PIC_LOAD_DONE:
+                    }
+                    case AppContext.MSG_NEWS_PIC_LOAD_DONE: {
                         //progressDlg.hide();
                         Bundle data = msg.getData();
-                        if(msg.obj != null && data != null){
-                            ((News)msg.obj).setPicObj((Bitmap)data.getParcelable("image"));
+                        if (msg.obj != null && data != null) {
+                            ((News) msg.obj).setPicObj((Bitmap) data.getParcelable("image"));
                             lvNewsAdapter.notifyDataSetChanged();
                         }
                         break;
+                    }
+                    case AppContext.MSG_NEWS_ITEM_CLICK: {
+                        News news = (News)msg.obj;
+                        if(news == null)
+                            return;
+                        Intent intent = new Intent(Main.this, NewsDetail.class);
+                        intent.putExtra("title",news.getTitle());
+                        intent.putExtra("link",news.getLink());
+                        intent.putExtra("previewBody",news.getBody());
+                        Main.this.startActivity(intent);
+                    }
                 }
             }
         };
@@ -136,7 +149,6 @@ public class Main extends BaseActivity {
 
             }
         });
-
 
     }
 

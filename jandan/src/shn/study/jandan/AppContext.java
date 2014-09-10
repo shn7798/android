@@ -13,6 +13,10 @@ public class AppContext extends Application {
     public final static int MSG_NEWS_PIC_LOAD_START = 0x03;
     public final static int MSG_NEWS_PIC_LOAD_DONE = 0x04;
 
+    public final static int MSG_NEWS_ITEM_CLICK = 0x05;
+    public final static int MSG_NEWS_DETAIL_LOAD_START = 0x06;
+    public final static int MSG_NEWS_DETAIL_LOAD_DONE = 0x07;
+
     /**
      * This method is for use in emulated process environments.  It will
      * never be called on a production Android device, where processes are
