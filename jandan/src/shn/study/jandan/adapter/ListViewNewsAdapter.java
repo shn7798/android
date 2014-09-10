@@ -5,10 +5,12 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+import shn.study.jandan.AppContext;
 import shn.study.jandan.R;
 import shn.study.jandan.api.NewsAPI;
 import shn.study.jandan.bean.News;
@@ -23,11 +25,12 @@ import java.util.List;
 public class ListViewNewsAdapter extends BaseAdapter {
     private Context context;
     private LayoutInflater listContainer;
-    private int resource;
     private int newsType;
     private List<News> newsData;
+    private int layoutID;
+    private Handler handler;
 
-    static class ListItemView {
+    private class ListItemView {
         public TextView title;
         public TextView body;
         public ImageView pic;
@@ -35,12 +38,12 @@ public class ListViewNewsAdapter extends BaseAdapter {
         public Button getTitle;
     }
 
-    public ListViewNewsAdapter(Context context, int newsType, List<News> newsData, int resource) {
+    public ListViewNewsAdapter(Context context, int layoutID,int newsType, List<News> newsData, Handler handler) {
         this.context = context;
-        this.listContainer = LayoutInflater.from(context);
-        this.resource = resource;
         this.newsType = newsType;
         this.newsData = newsData;
+        this.handler = handler;
+        this.layoutID = layoutID;
     }
 
     @Override
@@ -63,7 +66,7 @@ public class ListViewNewsAdapter extends BaseAdapter {
         ListItemView item = null;
 
         if(convertView == null){
-            convertView = this.listContainer.inflate(this.resource, null);
+            convertView = LayoutInflater.from(this.context).inflate(this.layoutID,null);
 
             item = new ListItemView();
             item.title = (TextView)convertView.findViewById(R.id.news_listitem_title);
@@ -78,40 +81,18 @@ public class ListViewNewsAdapter extends BaseAdapter {
         News news = this.newsData.get(position);
         item.title.setText(news.getTitle());
         item.title.setTag(news);
-
         item.body.setText(news.getBody());
+        // 先清空image
+        item.pic.setImageBitmap(null);
+        if(news.getPicObj() == null) {
+            Message msg = new Message();
+            msg.what = AppContext.MSG_NEWS_PIC_LOAD_START;
+            handler.sendMessage(msg);
 
-
-        if(news.getPicObj() == null){
-            final ListItemView itemRO = item;
-            final News newsRO = news;
-            final Handler handler = new Handler() {
-                @Override
-                public void handleMessage(Message msg) {
-                    super.handleMessage(msg);
-                    switch (msg.what) {
-                        case NewsAPI.API_SUCEESS:
-                            newsRO.setPicObj((Bitmap)msg.obj);
-                            itemRO.pic.setImageBitmap((Bitmap) msg.obj);
-                            break;
-                    }
-                }
-            };
-
-            final String imageURL = news.getPicURL();
-            new Thread() {
-                @Override
-                public void run() {
-                    super.run();
-                    Message msg = new Message();
-                    msg.what = NewsAPI.API_SUCEESS;
-                    msg.obj = ImageHelper.getImageFromURL(imageURL);
-                    handler.sendMessage(msg);
-                }
-            }.start();
+            ImageHelper.threadGetImageFromURL(news, news.getPicURL(), handler, AppContext.MSG_NEWS_PIC_LOAD_DONE);
+        } else {
+            item.pic.setImageBitmap(news.getPicObj());
         }
-
-        item.pic.setImageBitmap(news.getPicObj());
         return convertView;
     }
 }

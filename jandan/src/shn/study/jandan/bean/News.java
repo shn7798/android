@@ -6,6 +6,8 @@ import android.graphics.Bitmap;
  * Created by shn7798 on 14-9-7.
  */
 public class News extends Base {
+    public final static int NEWS_TYPE_NORMAL = 0;
+
     private String title;
     private String body;
     private NewsComment newsComment;

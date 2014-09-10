@@ -8,12 +8,10 @@ import android.widget.Toast;
  * Created by shn7798 on 14-9-7.
  */
 public class AppContext extends Application {
-    private Toast toast;
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        toast = new Toast(this);
-    }
+    public final static int MSG_NEWS_TEXT_LOAD_START = 0x01;
+    public final static int MSG_NEWS_TEXT_LOAD_DONE = 0x02;
+    public final static int MSG_NEWS_PIC_LOAD_START = 0x03;
+    public final static int MSG_NEWS_PIC_LOAD_DONE = 0x04;
 
     /**
      * This method is for use in emulated process environments.  It will
@@ -22,9 +20,7 @@ public class AppContext extends Application {
      * is executed when doing so.
      */
 
-    public Toast getToast(){
-        return toast;
-    }
+
     @Override
     public void onTerminate() {
         super.onTerminate();

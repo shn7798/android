@@ -1,10 +1,14 @@
 package shn.study.jandan.api;
 
+import android.graphics.Bitmap;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import shn.study.jandan.bean.News;
 import shn.study.jandan.util.HTTPClientHelper;
+import shn.study.jandan.util.ImageHelper;
 import shn.study.jandan.util.StringHelper;
 
 import java.text.SimpleDateFormat;
@@ -108,6 +112,8 @@ public class NewsAPI {
         news.setBody(body.trim());
         news.setPicURL(picURL.trim());
 
+
         return news;
     }
+
 }
