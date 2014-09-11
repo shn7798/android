@@ -62,6 +62,7 @@ public class NewsDetail extends BaseActivity {
             String body = NewsAPI.getNewsBody(page);
             if(body.length() > 0) {
                 body = NewsAPI.processNewsImage(body);
+                Log.d("webview",body);
                 wvNewsDetailBody.loadDataWithBaseURL("", body, "text/html", this.charset, "");
                 return;
             }
@@ -132,6 +133,7 @@ public class NewsDetail extends BaseActivity {
                 super.run();
                 handler.obtainMessage(AppContext.MSG_NEWS_DETAIL_LOAD_START)
                         .sendToTarget();
+                Log.d("thread link: ",link);
                 String page = fetchNewsPage(link);
 
                 handler.obtainMessage(AppContext.MSG_NEWS_DETAIL_LOAD_DONE,page)
