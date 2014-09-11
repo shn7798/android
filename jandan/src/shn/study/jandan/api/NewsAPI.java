@@ -142,7 +142,7 @@ public class NewsAPI {
 
     public static String getNewsBody(String newsPage){
         return StringHelper.getSubString(newsPage,
-                "m</div>","div class=\"share-links\">",
+                "m</div>","<div class=\"share-links\">",
                 new StringHelper.StringCursor(0),
                 false);
     }
