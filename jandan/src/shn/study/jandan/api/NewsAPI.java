@@ -133,4 +133,22 @@ public class NewsAPI {
         return news;
     }
 
+    public static String getNewsPage(String URL)
+        throws ClientProtocolException,IOException{
+        HttpResponse response = HTTPClientHelper.getFromURL(URL);
+        HttpEntity entity = response.getEntity();
+        return HTTPClientHelper.InputStreamTOString(entity.getContent());
+    }
+
+    public static String getNewsBody(String newsPage){
+        return StringHelper.getSubString(newsPage,
+                "m</div>","<p><em>",
+                new StringHelper.StringCursor(0),
+                false);
+    }
+
+    public static String processNewsImage(String body){
+        return body.replace("<img","<img width=\"100%\"");
+    }
+
 }

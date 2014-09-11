@@ -203,4 +203,12 @@ public class Main extends BaseActivity {
 
 
     }
+
+    @Override
+    protected void onDestroy() {
+        progressDlg.hide();
+        progressDlg.dismiss();
+
+        super.onDestroy();
+    }
 }

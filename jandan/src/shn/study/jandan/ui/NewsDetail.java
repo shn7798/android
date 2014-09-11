@@ -1,5 +1,6 @@
 package shn.study.jandan.ui;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -16,6 +17,7 @@ import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import shn.study.jandan.AppContext;
 import shn.study.jandan.R;
+import shn.study.jandan.api.NewsAPI;
 import shn.study.jandan.util.HTTPClientHelper;
 import shn.study.jandan.util.StringHelper;
 
@@ -35,11 +37,13 @@ public class NewsDetail extends BaseActivity {
 
     private TextView tvNewsDetailBody;
     private WebView wvNewsDetailBody;
+    private ProgressDialog progressDlg;
 
-    private String getNewsPage(String URL){
-        HttpResponse response;
+
+    private String fetchNewsPage(String URL){
+        String page;
         try {
-            response = HTTPClientHelper.getFromURL(URL);
+            page = NewsAPI.getNewsPage(URL);
         } catch (ClientProtocolException e){
             e.printStackTrace();
             handler.obtainMessage(AppContext.MSG_SHOW_TOAST,"网络连接失败！")
@@ -51,31 +55,22 @@ public class NewsDetail extends BaseActivity {
                     .sendToTarget();
             return "";
         }
-        HttpEntity entity = response.getEntity();
-        String page;
-        try {
-            page = HTTPClientHelper.InputStreamTOString(entity.getContent());
-        } catch (Exception e){
-            e.printStackTrace();
-            AppContext.showToast(ac, "加载内容异常！");
-            return "";
-        }
         return page;
     }
-
-    private String processNewsImage(String body){
-        return body.replace("<img","<img width=\"100%\"");
-    }
-
     private void updateNewsDetail(String page){
-        //String first6 = this.previewBody.substring(0,5);
-        String body = StringHelper.getSubString(page,"m</div>","<p><em>",new StringHelper.StringCursor(0),false);
-        if(body.length() > 0){
-
-            body = processNewsImage(body);
-            Log.d("body",body);
-            wvNewsDetailBody.loadDataWithBaseURL("",body,"text/html",this.charset,"");
+        if(page.length() > 0) {
+            String body = NewsAPI.getNewsBody(page);
+            if(body.length() > 0) {
+                body = NewsAPI.processNewsImage(body);
+                wvNewsDetailBody.loadDataWithBaseURL("", body, "text/html", this.charset, "");
+                return;
+            }
         }
+
+        handler.obtainMessage(AppContext.MSG_SHOW_TOAST,"加载内容失败，请重试！")
+                .sendToTarget();
+
+
     }
     private void initNewsDetailView(View layNewsDetail){
         tvNewsDetailBody = (TextView)layNewsDetail.findViewById(R.id.news_detail_body);
@@ -83,8 +78,6 @@ public class NewsDetail extends BaseActivity {
         tvNewsDetailBody.setText(previewBody);
 
         wvNewsDetailBody = (WebView)layNewsDetail.findViewById(R.id.web_news_detail_body);
-        //wvNewsDetailBody.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
-        //wvNewsDetailBody.getSettings().setLoadWithOverviewMode(true);
         wvNewsDetailBody.loadDataWithBaseURL("",previewBody,"text/html",this.charset,"");
     }
 
@@ -102,6 +95,11 @@ public class NewsDetail extends BaseActivity {
         ac = getApplicationContext();
         View layNewsDetail = getLayoutInflater().inflate(R.layout.news_detail,null);
 
+        progressDlg = new ProgressDialog(this);
+        progressDlg.setCanceledOnTouchOutside(false);
+        progressDlg.setCancelable(false);
+        progressDlg.hide();
+
         initIntentData();
         initNewsDetailView(layNewsDetail);
         // 加载数据
@@ -111,13 +109,16 @@ public class NewsDetail extends BaseActivity {
                 super.handleMessage(msg);
                 switch (msg.what){
                     case AppContext.MSG_NEWS_DETAIL_LOAD_START:{
+                        progressDlg.show();
                         break;
                     }
                     case AppContext.MSG_NEWS_DETAIL_LOAD_DONE:{
+                        progressDlg.hide();
                         updateNewsDetail((String) msg.obj);
                         break;
                     }
                     case AppContext.MSG_SHOW_TOAST:{
+                        progressDlg.hide();
                         AppContext.showToast(NewsDetail.this,(String)msg.obj);
                         break;
                     }
@@ -129,15 +130,23 @@ public class NewsDetail extends BaseActivity {
             @Override
             public void run() {
                 super.run();
-                Message msg = new Message();
-                String page = getNewsPage(link);
-                if(!page.equals("")) {
-                    msg.obj = page;
-                    msg.what = AppContext.MSG_NEWS_DETAIL_LOAD_DONE;
-                    handler.sendMessage(msg);
-                }
+                handler.obtainMessage(AppContext.MSG_NEWS_DETAIL_LOAD_START)
+                        .sendToTarget();
+                String page = fetchNewsPage(link);
+
+                handler.obtainMessage(AppContext.MSG_NEWS_DETAIL_LOAD_DONE,page)
+                        .sendToTarget();
+
             }
         }.start();
         setContentView(layNewsDetail);
+    }
+
+    @Override
+    protected void onDestroy() {
+        progressDlg.hide();
+        progressDlg.dismiss();
+
+        super.onDestroy();
     }
 }
