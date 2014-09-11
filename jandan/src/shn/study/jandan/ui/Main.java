@@ -192,7 +192,7 @@ public class Main extends BaseActivity {
         super.onCreate(savedInstanceState);
         ac = getApplicationContext();
 
-        View layNews = getLayoutInflater().inflate(R.layout.main,null);
+        View layNews = getLayoutInflater().inflate(R.layout.main, null);
         progressDlg = new ProgressDialog(this);
         progressDlg.setCanceledOnTouchOutside(false);
         progressDlg.setCancelable(false);
