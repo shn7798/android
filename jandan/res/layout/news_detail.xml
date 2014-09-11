@@ -11,12 +11,16 @@
     <ScrollView
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:id="@+id/scrollView">
+            android:id="@+id/scrollView" android:visibility="gone">
         <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:id="@+id/news_detail_body" android:autoText="false" android:linksClickable="true"
-                android:visibility="visible" android:textIsSelectable="false" android:text="asasasa"
+                android:visibility="gone" android:textIsSelectable="false" android:text="asasasa"
                 android:textSize="20dp"/>
     </ScrollView>
+    <WebView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:id="@+id/web_news_detail_body" android:layout_gravity="center_horizontal"/>
 </LinearLayout>

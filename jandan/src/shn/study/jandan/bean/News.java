@@ -21,6 +21,15 @@ public class News extends Base {
     private String link;
     private String picURL;
     private Bitmap picObj;
+    private String charset;
+
+    public String getCharset() {
+        return charset;
+    }
+
+    public void setCharset(String charset) {
+        this.charset = charset;
+    }
 
     public Bitmap getPicObj() {
         return picObj;

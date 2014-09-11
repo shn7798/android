@@ -26,10 +26,14 @@ public class StringHelper {
         if(posStart < 0)
             return "";
 
-        posEnd = source.indexOf(flagEnd,posStart+flagStart.length());
-        if(posEnd < 0)
-            return "";
-
+        // 如果结束字符是空，那么匹配到字符串最后
+        if(flagEnd.equals("")){
+            posEnd = source.length()-1;
+        } else {
+            posEnd = source.indexOf(flagEnd, posStart + flagStart.length());
+            if (posEnd < 0)
+                return "";
+        }
         cursor.value = posEnd + flagEnd.length();
 
         if(isKeepFlag){

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
 
 import java.io.IOException;
 
@@ -17,7 +18,16 @@ public class ImageHelper {
         new Thread(){
             @Override
             public void run() {
-                Bitmap img = getImageFromURL(imageURL);
+                Bitmap img;
+                try {
+                    img = getImageFromURL(imageURL);
+                } catch (ClientProtocolException e){
+                    e.printStackTrace();
+                    return;
+                } catch (IOException e){
+                    e.printStackTrace();
+                    return;
+                }
                 Bundle data = new Bundle();
                 data.putParcelable("image",img);
 
@@ -31,16 +41,11 @@ public class ImageHelper {
         }.start();
     }
 
-    public static Bitmap getImageFromURL(String imageURL){
-        Bitmap bitmap;
-        try {
-            HttpResponse response = HTTPClientHelper.getFromURL(imageURL);
-            bitmap = BitmapFactory.decodeStream(response.getEntity().getContent());
-        } catch (IOException e){
-            e.printStackTrace();
-            return null;
-        }
-        return bitmap;
+    public static Bitmap getImageFromURL(String imageURL)
+            throws IOException, ClientProtocolException {
+
+        HttpResponse response = HTTPClientHelper.getFromURL(imageURL);
+        return BitmapFactory.decodeStream(response.getEntity().getContent());
     }
 
     public static Bitmap getImageFromPath(String imagePath){

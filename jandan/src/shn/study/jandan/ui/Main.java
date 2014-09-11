@@ -1,6 +1,7 @@
 package shn.study.jandan.ui;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
 import shn.study.jandan.AppContext;
 import shn.study.jandan.R;
 import shn.study.jandan.adapter.ListViewNewsAdapter;
@@ -21,6 +23,7 @@ import shn.study.jandan.bean.News;
 import shn.study.jandan.util.HTTPClientHelper;
 import shn.study.jandan.util.ImageHelper;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +33,7 @@ import java.util.List;
 public class Main extends BaseActivity {
     public final static String TAG = "MainUI";
 
+    private Context ac;
     private ListView lvNews;
 
     private Button btnToday;
@@ -60,6 +64,11 @@ public class Main extends BaseActivity {
                 super.handleMessage(msg);
                 Log.d(TAG,"msg.what: "+msg.what);
                 switch (msg.what){
+                    case AppContext.MSG_SHOW_TOAST:{
+                        progressDlg.hide();
+                        AppContext.showToast(ac,(String)msg.obj);
+                        break;
+                    }
                     case AppContext.MSG_NEWS_TEXT_LOAD_START: {
                         progressDlg.show();
                         break;
@@ -98,6 +107,7 @@ public class Main extends BaseActivity {
                         intent.putExtra("title",news.getTitle());
                         intent.putExtra("link",news.getLink());
                         intent.putExtra("previewBody",news.getBody());
+                        intent.putExtra("charset",news.getCharset());
                         Main.this.startActivity(intent);
                     }
                 }
@@ -153,22 +163,39 @@ public class Main extends BaseActivity {
     }
 
     private void updateNews(int day,List<News> newsList,Handler handler){
-        Message msg = handler.obtainMessage(AppContext.MSG_NEWS_TEXT_LOAD_START);
-        handler.sendMessage(msg);
+        handler.obtainMessage(AppContext.MSG_NEWS_TEXT_LOAD_START)
+                    .sendToTarget();
         String URL = NewsAPI.getDayNewsURL(day);
         Log.d(TAG, "URL = [" + URL + "]");
-        String body = NewsAPI.getPreviewNewsBody(URL);
-        List<News> newsListData = NewsAPI.getPreviewNewsItems(body);
+        Bundle newsData;
+        try {
+            newsData = NewsAPI.getPreviewNewsBody(URL);
+        } catch (ClientProtocolException e){
+            e.printStackTrace();
+            handler.obtainMessage(AppContext.MSG_SHOW_TOAST,"网络连接失败！")
+                    .sendToTarget();
 
-        Message msg2 = handler.obtainMessage(AppContext.MSG_NEWS_TEXT_LOAD_DONE,newsListData);
-        handler.sendMessage(msg2);
+            return;
+        } catch (IOException e){
+            handler.obtainMessage(AppContext.MSG_SHOW_TOAST,"未知错误！")
+                    .sendToTarget();
+            return;
+        }
+        List<News> newsListData = NewsAPI.getPreviewNewsItems(newsData);
+
+        handler.obtainMessage(AppContext.MSG_NEWS_TEXT_LOAD_DONE,newsListData)
+                .sendToTarget();
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        ac = getApplicationContext();
+
         View layNews = getLayoutInflater().inflate(R.layout.main,null);
         progressDlg = new ProgressDialog(this);
+        progressDlg.setCanceledOnTouchOutside(false);
+        progressDlg.setCancelable(false);
         progressDlg.hide();
 
         initNewsView(layNews);

@@ -1,6 +1,7 @@
 package shn.study.jandan;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.res.Configuration;
 import android.widget.Toast;
 
@@ -17,6 +18,8 @@ public class AppContext extends Application {
     public final static int MSG_NEWS_DETAIL_LOAD_START = 0x06;
     public final static int MSG_NEWS_DETAIL_LOAD_DONE = 0x07;
 
+    public final static int MSG_SHOW_TOAST = 0x08;
+
     /**
      * This method is for use in emulated process environments.  It will
      * never be called on a production Android device, where processes are
@@ -25,6 +28,10 @@ public class AppContext extends Application {
      */
 
 
+    public static void showToast(Context context, String msg){
+        Toast.makeText(context, msg ,Toast.LENGTH_SHORT)
+                .show();
+    }
     @Override
     public void onTerminate() {
         super.onTerminate();

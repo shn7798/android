@@ -1,16 +1,20 @@
 package shn.study.jandan.api;
 
 import android.graphics.Bitmap;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import shn.study.jandan.AppContext;
 import shn.study.jandan.bean.News;
 import shn.study.jandan.util.HTTPClientHelper;
 import shn.study.jandan.util.ImageHelper;
 import shn.study.jandan.util.StringHelper;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -42,30 +46,41 @@ public class NewsAPI {
     private static final String PREVIEW_NEWS_BODY_START = "<!-- BEGIN content -->";
     private static final String PREVIEW_NEWS_BODY_END = "<!-- END content -->";
 
-    public static String getPreviewNewsBody(String URL){
-        try {
-            HttpResponse response = HTTPClientHelper.getFromURL(URL);
-            HttpEntity entity = response.getEntity();
-            String content = HTTPClientHelper.InputStreamTOString(entity.getContent());
-            return StringHelper.getSubString(content, PREVIEW_NEWS_BODY_START, PREVIEW_NEWS_BODY_END, null);
-        } catch (Exception e){
-            e.printStackTrace();
-            return "";
-        }
+    public static Bundle getPreviewNewsBody(String URL)
+            throws ClientProtocolException,IOException{
+        Bundle data = new Bundle();
+
+        HttpResponse response = HTTPClientHelper.getFromURL(URL);
+        HttpEntity entity = response.getEntity();
+        String contentType = entity.getContentType().getValue();
+        contentType += ";"; // 方便下面的substring
+        String charset = StringHelper.getSubString(contentType,"charset=",";",new StringHelper.StringCursor(0));
+        String content = HTTPClientHelper.InputStreamTOString(entity.getContent());
+        String body = StringHelper.getSubString(content, PREVIEW_NEWS_BODY_START, PREVIEW_NEWS_BODY_END, null);
+
+        data.putString("body",body);
+        data.putString("charset",charset);
+
+        return data;
     }
 
     private static final String PREVIEW_NEWS_ITEM_START = "<div class=\"post f\">";
     private static final String PREVIEW_NEWS_ITEM_END = "<span class=\"break\"></span>";
 
-    public static List<News> getPreviewNewsItems(String body){
+    public static List<News> getPreviewNewsItems(Bundle data){
         StringHelper.StringCursor cursor = new StringHelper.StringCursor(0);
         int posStart;
         int posEnd;
         List<News> items = new ArrayList<News>();
 
+        if(data == null){
+            return items;
+        }
+        String charset = data.getString("charset");
         String itemBody;
-        while(!(itemBody = StringHelper.getSubString(body,PREVIEW_NEWS_ITEM_START,PREVIEW_NEWS_ITEM_END,cursor)).equals("")){
-            items.add(getPreviewNews(itemBody));
+
+        while(!(itemBody = StringHelper.getSubString(data.getString("body"),PREVIEW_NEWS_ITEM_START,PREVIEW_NEWS_ITEM_END,cursor)).equals("")){
+            items.add(getPreviewNews(itemBody,charset));
         }
         return items;
     }
@@ -83,7 +98,7 @@ public class NewsAPI {
      *
      *
      */
-    private static News getPreviewNews(String newsBody){
+    private static News getPreviewNews(String newsBody, String charset){
         StringHelper.StringCursor cursor = new StringHelper.StringCursor(0);
         News news = new News();
 
@@ -111,6 +126,8 @@ public class NewsAPI {
         news.setTag(tag.trim());
         news.setBody(body.trim());
         news.setPicURL(picURL.trim());
+        news.setCharset(charset.trim());
+        Log.d(TAG,"charset: "+charset);
 
 
         return news;

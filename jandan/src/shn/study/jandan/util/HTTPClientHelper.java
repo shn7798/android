@@ -1,7 +1,9 @@
 package shn.study.jandan.util;
 
 
+import android.widget.Toast;
 import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
@@ -55,11 +57,13 @@ public class HTTPClientHelper {
      * 获取HTTPClient实例
      * @return
      */
-    public static HttpClient getHttpClient(){
+    public static HttpClient getHttpClient()
+            throws IOException, ClientProtocolException{
         return new DefaultHttpClient();
     }
 
-    public static HttpResponse getFromURL(String URL){
+    public static HttpResponse getFromURL(String URL)
+            throws IOException, ClientProtocolException{
         return getFromURL(URL,null);
     }
 
@@ -69,7 +73,8 @@ public class HTTPClientHelper {
      * @param headers
      * @return response
      */
-    public static HttpResponse getFromURL(String URL, Map<String,String> headers){
+    public static HttpResponse getFromURL(String URL, Map<String,String> headers)
+            throws IOException, ClientProtocolException{
         if(URL == null)
             return null;
         HttpResponse response;
@@ -78,23 +83,21 @@ public class HTTPClientHelper {
         HttpGet httpGet = new HttpGet(URL);
 
         setRequestHeaders(headers, httpGet);
+        response = httpClient.execute(httpGet);
 
-        try {
-            response = httpClient.execute(httpGet);
-        } catch (IOException e){
-            response = null;
-            e.printStackTrace();
-        }
         return response;
     }
 
-    public static HttpResponse postFromURL(String URL, Map<String,String> headers){
+    public static HttpResponse postFromURL(String URL, Map<String,String> headers)
+            throws IOException, ClientProtocolException{
         return postFromURL(URL,headers,null);
     }
-    public static HttpResponse postFromURL(String URL, List form){
+    public static HttpResponse postFromURL(String URL, List form)
+            throws IOException, ClientProtocolException{
         return postFromURL(URL,null,form);
     }
-    public static HttpResponse postFromURL(String URL){
+    public static HttpResponse postFromURL(String URL)
+            throws IOException, ClientProtocolException{
         return postFromURL(URL,null,null);
     }
 
@@ -105,7 +108,8 @@ public class HTTPClientHelper {
      * @param form
      * @return response
      */
-    public static HttpResponse postFromURL(String URL, Map<String,String> headers, List form){
+    public static HttpResponse postFromURL(String URL, Map<String,String> headers, List form)
+            throws IOException, ClientProtocolException{
         if(URL == null)
             return null;
         HttpResponse response;
@@ -116,12 +120,8 @@ public class HTTPClientHelper {
         setRequestHeaders(headers, httpPost);
         setPostRequestForm(form,httpPost);
 
-        try {
-            response = httpClient.execute(httpPost);
-        } catch (IOException e){
-            response = null;
-            e.printStackTrace();
-        }
+        response = httpClient.execute(httpPost);
+
         return response;
     }
 
@@ -133,8 +133,8 @@ public class HTTPClientHelper {
      * @throws Exception
      */
 
-    public static String InputStreamTOString(InputStream in, String charSet) throws Exception{
-
+    public static String InputStreamTOString(InputStream in, String charSet)
+            throws IOException{
         ByteArrayOutputStream outStream = new ByteArrayOutputStream();
         byte[] data = new byte[BUFFER_SIZE];
         int count = -1;
@@ -145,7 +145,8 @@ public class HTTPClientHelper {
         return new String(outStream.toByteArray(),charSet);
     }
 
-    public static String InputStreamTOString(InputStream in) throws Exception {
+    public static String InputStreamTOString(InputStream in)
+            throws IOException {
         return InputStreamTOString(in,HTTP.UTF_8);
     }
 
