@@ -12,7 +12,12 @@ public class BaseNewsInfo{
     public static shn.study.jandan2.beans.NewsInfo parse(Element e){
         NewsInfo newsInfo = new NewsInfo();
 
-        String iconLink = e.select("div.thumbs_b > a > img[src]").first().attr("src");
+        Element iconE = e.select("div.thumbs_b > a > img").first();
+        String iconLink = iconE.attr("src");
+        if(iconLink.isEmpty()){
+            // jquery lazyload
+            iconLink = iconE.attr("data-original");
+        }
         String newsLink = e.select("div.thumbs_b > a[href]").first().attr("href");
         //String newsLink = e.select("div.indexs > h2 > a[href]").first().attr("href");
         String newsTitle = e.select("div.indexs > h2 > a[href]").first().text();

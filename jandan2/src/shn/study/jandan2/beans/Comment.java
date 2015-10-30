@@ -60,14 +60,15 @@ public class Comment {
 		this.index = index;
 	}
 
-	@Override
-	public String toString() {
-		return "Comment{" +
-				"author=" + author +
-				", postDate='" + postDate + '\'' +
-				", text='" + text + '\'' +
-				", vote=" + vote +
-				", index='" + index + '\'' +
-				'}';
-	}
+    @Override
+    public String toString() {
+        return "Comment{" +
+                "author=" + author +
+                ", postDate='" + postDate + '\'' +
+                ", text='" + text + '\'' +
+                ", vote=" + vote +
+                ", index='" + index + '\'' +
+                ", html='" + html + '\'' +
+                '}';
+    }
 }

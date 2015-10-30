@@ -4,6 +4,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import shn.study.jandan2.api.NewsDetail.JandanNewsDetail;
 import shn.study.jandan2.api.NewsInfo.JandanNewsInfo;
 import shn.study.jandan2.api.Wuliaotu.JandanWuliaotu;
 import shn.study.jandan2.beans.*;
@@ -26,7 +27,7 @@ public class JandanAPI2 {
 //            InputStream is = response.getEntity().getContent();
 //            Document doc = Jsoup.parse(is, "UTF-8", url);
 //
-            FileInputStream fis = new FileInputStream("/Users/shn7798/Documents/jandan.html");
+            FileInputStream fis = new FileInputStream("test/newsInfo.html");
             Document doc = Jsoup.parse(fis, "UTF-8", url);
 
             Elements es = doc.select("#content > div.post.f.list-post");
@@ -49,6 +50,25 @@ public class JandanAPI2 {
         return newsInfoList;
     }
 
+    public static NewsDetail getNewsDetail(String url){
+        try {
+//            HttpResponse response = HTTPClientHelper.getFromURL(url);
+//
+//            //Jsoup.parse()
+//            InputStream is = response.getEntity().getContent();
+//            Document doc = Jsoup.parse(is, "UTF-8", url);
+//
+            FileInputStream fis = new FileInputStream("test/newsDetail.html");
+            Document doc = Jsoup.parse(fis, "UTF-8", url);
+            NewsDetail newsDetail = JandanNewsDetail.parse(doc.body());
+            return newsDetail;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public static List<Wuliaotu> getWuliaotuList(String url){
         List<Wuliaotu> wuliaotuList = new ArrayList<Wuliaotu>();
         try {
@@ -58,7 +78,7 @@ public class JandanAPI2 {
 //            InputStream is = response.getEntity().getContent();
 //            Document doc = Jsoup.parse(is, "UTF-8", url);
 //
-            FileInputStream fis = new FileInputStream("/Users/shn7798/Documents/jandanpic.html");
+            FileInputStream fis = new FileInputStream("test/wuliaotu.html");
             Document doc = Jsoup.parse(fis, "UTF-8", url);
 
             Element list = doc.select("ol.commentlist").first();
@@ -81,8 +101,10 @@ public class JandanAPI2 {
     }
 
     public static void main(String[] args){
-        //List<NewsInfo> nsList = getNewsInfoList("http://jandan.net");
-        List<Wuliaotu> nsList = getWuliaotuList("http://jandan.net/pic");
+        List<NewsInfo> newsInfoList = getNewsInfoList("http://jandan.net");
+        List<Wuliaotu> WuliaotuList = getWuliaotuList("http://jandan.net/pic/page-7690#comments");
+        NewsDetail newsDetail = getNewsDetail("http://jandan.net/2015/10/30/metal-spiders.html");
+        System.out.println(newsDetail);
 
     }
 }
