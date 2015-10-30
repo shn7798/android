@@ -9,10 +9,19 @@ public class NewsDetail {
 	private Author author;
 	private String tag;
 	private String link;
-	private Date postDate;
+	private String postDate;
 	private String text;
 	private String via;
 	private List<Comment> comments;
+    private String html;
+
+    public String getHtml() {
+        return html;
+    }
+
+    public void setHtml(String html) {
+        this.html = html;
+    }
 
 	public String getTitle() {
 		return title;
@@ -46,11 +55,11 @@ public class NewsDetail {
 		this.link = link;
 	}
 
-	public Date getPostDate() {
+	public String getPostDate() {
 		return postDate;
 	}
 
-	public void setPostDate(Date postDate) {
+	public void setPostDate(String postDate) {
 		this.postDate = postDate;
 	}
 
@@ -76,5 +85,19 @@ public class NewsDetail {
 
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
+	}
+
+	@Override
+	public String toString() {
+		return "NewsDetail{" +
+				"title='" + title + '\'' +
+				", author=" + author +
+				", tag='" + tag + '\'' +
+				", link='" + link + '\'' +
+				", postDate='" + postDate + '\'' +
+				", text='" + text + '\'' +
+				", via='" + via + '\'' +
+				", comments=" + comments +
+				'}';
 	}
 }

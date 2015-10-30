@@ -6,11 +6,21 @@ import java.util.Date;
 public class Comment {
 
 	private Author author;
-	private Date postDate;
+	private String postDate;
 	private String text;
 	private Vote vote;
+	private String index;
+    private String html;
 
-	public Author getAuthor() {
+    public String getHtml() {
+        return html;
+    }
+
+    public void setHtml(String html) {
+        this.html = html;
+    }
+
+    public Author getAuthor() {
 		return author;
 	}
 
@@ -18,11 +28,11 @@ public class Comment {
 		this.author = author;
 	}
 
-	public Date getPostDate() {
+	public String getPostDate() {
 		return postDate;
 	}
 
-	public void setPostDate(Date postDate) {
+	public void setPostDate(String postDate) {
 		this.postDate = postDate;
 	}
 
@@ -40,5 +50,24 @@ public class Comment {
 
 	public void setVote(Vote vote) {
 		this.vote = vote;
+	}
+
+	public String getIndex() {
+		return index;
+	}
+
+	public void setIndex(String index) {
+		this.index = index;
+	}
+
+	@Override
+	public String toString() {
+		return "Comment{" +
+				"author=" + author +
+				", postDate='" + postDate + '\'' +
+				", text='" + text + '\'' +
+				", vote=" + vote +
+				", index='" + index + '\'' +
+				'}';
 	}
 }

@@ -29,4 +29,13 @@ public class Author {
     public void setLink(String link) {
         this.link = link;
     }
+
+    @Override
+    public String toString() {
+        return "Author{" +
+                "name='" + name + '\'' +
+                ", hash='" + hash + '\'' +
+                ", link='" + link + '\'' +
+                '}';
+    }
 }

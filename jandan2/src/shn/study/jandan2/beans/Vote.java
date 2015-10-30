@@ -2,22 +2,30 @@ package shn.study.jandan2.beans;
 
 public class Vote {
 
-	private int oo;
-	private int xx;
+	private String oo;
+	private String xx;
 
-	public int getOo() {
+	public String getOo() {
 		return oo;
 	}
 
-	public void setOo(int oo) {
+	public void setOo(String oo) {
 		this.oo = oo;
 	}
 
-	public int getXx() {
+	public String getXx() {
 		return xx;
 	}
 
-	public void setXx(int xx) {
+	public void setXx(String xx) {
 		this.xx = xx;
+	}
+
+	@Override
+	public String toString() {
+		return "Vote{" +
+				"oo='" + oo + '\'' +
+				", xx='" + xx + '\'' +
+				'}';
 	}
 }
