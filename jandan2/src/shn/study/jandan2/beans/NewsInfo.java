@@ -1,5 +1,7 @@
 package shn.study.jandan2.beans;
 
+import android.graphics.Bitmap;
+
 public class NewsInfo {
 
 	private String title;
@@ -8,8 +10,17 @@ public class NewsInfo {
 	private String link;
 	private String intros;
 	private String iconLink;
+    private Bitmap icon;
 
-	public String getTitle() {
+    public Bitmap getIcon() {
+        return icon;
+    }
+
+    public void setIcon(Bitmap icon) {
+        this.icon = icon;
+    }
+
+    public String getTitle() {
 		return title;
 	}
 

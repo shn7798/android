@@ -8,6 +8,7 @@ import shn.study.jandan2.api.NewsDetail.JandanNewsDetail;
 import shn.study.jandan2.api.NewsInfo.JandanNewsInfo;
 import shn.study.jandan2.api.Wuliaotu.JandanWuliaotu;
 import shn.study.jandan2.beans.*;
+import shn.study.jandan2.utils.HttpHelper;
 
 import java.io.FileInputStream;
 import java.util.ArrayList;
@@ -21,28 +22,19 @@ public class JandanAPI2 {
     public static List<NewsInfo> getNewsInfoList(String url){
         List<NewsInfo> newsInfoList = new ArrayList<NewsInfo>();
         try{
-//            HttpResponse response = HTTPClientHelper.getFromURL(url);
-//
-//            //Jsoup.parse()
-//            InputStream is = response.getEntity().getContent();
-//            Document doc = Jsoup.parse(is, "UTF-8", url);
-//
-            FileInputStream fis = new FileInputStream("test/newsInfo.html");
-            Document doc = Jsoup.parse(fis, "UTF-8", url);
+            String html = HttpHelper.fetchJandanHtml(url);
+            Document doc = Jsoup.parse(html, url);
 
-            Elements es = doc.select("#content > div.post.f.list-post");
+            Elements es = doc.select("div.post");
             for(Element e : es) {
                 try {
                     NewsInfo newsInfo = JandanNewsInfo.parse(e);
                     newsInfoList.add(newsInfo);
-                    System.out.println(newsInfo);
                 }
                 catch (NullPointerException npe){
                     npe.printStackTrace();
                 }
-                //break;
             }
-            fis.close();
         }
         catch (Exception e){
             e.printStackTrace();
@@ -87,7 +79,6 @@ public class JandanAPI2 {
                 try {
                     Wuliaotu wuliaotu = JandanWuliaotu.parse(e);
                     wuliaotuList.add(wuliaotu);
-                    System.out.println(wuliaotu);
                 }
                 catch (NullPointerException npe){
                     npe.printStackTrace();
@@ -102,9 +93,15 @@ public class JandanAPI2 {
 
     public static void main(String[] args){
         List<NewsInfo> newsInfoList = getNewsInfoList("http://jandan.net");
-        List<Wuliaotu> WuliaotuList = getWuliaotuList("http://jandan.net/pic/page-7690#comments");
-        NewsDetail newsDetail = getNewsDetail("http://jandan.net/2015/10/30/metal-spiders.html");
-        System.out.println(newsDetail);
+        for(NewsInfo newsInfo : newsInfoList){
+            System.out.println(newsInfo);
+        }
+//        List<Wuliaotu> WuliaotuList = getWuliaotuList("http://jandan.net/pic/page-7690#comments");
+//        for(Wuliaotu wuliaotu : WuliaotuList){
+//            System.out.println(wuliaotu);
+//        }
+//        NewsDetail newsDetail = getNewsDetail("http://jandan.net/2015/10/30/metal-spiders.html");
+//        System.out.println(newsDetail);
 
     }
 }
